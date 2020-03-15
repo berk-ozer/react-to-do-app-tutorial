@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const ToDo = ({ todo }) => {
+  return (
+  <div className="todo">{todo.text}</div>
+  )
+}
+
 function App() {
   const [todos, setTodos] = useState(
     [
