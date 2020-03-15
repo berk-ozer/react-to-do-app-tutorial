@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const Todo = ({ todo, index, completeTodo, removeTodo }) => {
+const Todo = ({ todo, index, toggleCompleteTodo, removeTodo }) => {
   return (
   <div 
     className="todo"
@@ -9,7 +9,7 @@ const Todo = ({ todo, index, completeTodo, removeTodo }) => {
   >
     {todo.text}
     <div>
-      <button onClick={() => completeTodo(index)}>Complete</button>  
+      <button onClick={() => toggleCompleteTodo(index)}>Complete</button>  
       <button onClick={() => removeTodo(index)}>X</button>
     </div>  
   </div>
@@ -64,9 +64,9 @@ function App() {
     setTodos(newTodos);
   }
 
-  const completeTodo = index => {
+  const toggleCompleteTodo = index => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
   }
 
@@ -84,7 +84,7 @@ function App() {
             key={index}
             index={index}
             todo={todo}
-            completeTodo={completeTodo}
+            toggleCompleteTodo={toggleCompleteTodo}
             removeTodo={removeTodo}
           />
         ))}
