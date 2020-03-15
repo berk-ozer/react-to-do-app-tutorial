@@ -9,7 +9,9 @@ const Todo = ({ todo, index, toggleCompleteTodo, removeTodo }) => {
   >
     {todo.text}
     <div>
-      <button onClick={() => toggleCompleteTodo(index)}>Complete</button>  
+      <button onClick={() => toggleCompleteTodo(index)}>
+        {todo.isCompleted ? "Mark as incomplete" : "Mark as complete"}
+      </button>  
       <button onClick={() => removeTodo(index)}>X</button>
     </div>  
   </div>
