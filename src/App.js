@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const Todo = ({ todo, index, completeTodo }) => {
+const Todo = ({ todo, index, completeTodo, removeTodo }) => {
   return (
   <div 
     className="todo"
@@ -11,6 +11,7 @@ const Todo = ({ todo, index, completeTodo }) => {
     {todo.text}
     <div>
       <button onClick={() => completeTodo(index)}>Complete</button>  
+      <button onClick={() => removeTodo(index)}>X</button>
     </div>  
   </div>
   )
@@ -70,6 +71,12 @@ function App() {
     setTodos(newTodos);
   }
 
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  }
+
   return (
     <div className="app">
       <div className="todo-list">
@@ -79,6 +86,7 @@ function App() {
             index={index}
             todo={todo}
             completeTodo={completeTodo}
+            removeTodo={removeTodo}
           />
         ))}
         <TodoForm
