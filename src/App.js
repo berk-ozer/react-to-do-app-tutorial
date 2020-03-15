@@ -23,7 +23,7 @@ const TodoForm = ({ addTodo }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (!value) {
+    if (!value.trim()) {
       return;
     }
 
